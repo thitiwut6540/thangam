@@ -1,0 +1,15 @@
+php_value date.timezone "Asia/Bangkok"
+RewriteEngine on 
+RewriteBase /thangam/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|public|css/images|js|library)
+RewriteRule ^(.*)$ /thangam/index.php?/$1 [PT,L]
+
+# php_value date.timezone "Asia/Bangkok"
+# RewriteEngine on 
+# RewriteBase /
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond $1 !^(index\.php|public|css/images|js|library)
+# RewriteRule ^(.*)$ index.php/$1 [PT,L]
