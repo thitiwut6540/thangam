@@ -135,7 +135,7 @@
                     <div class="col-lg-12 text-center mb-4">
                         <div class="news_header">
                             <div>ข่าวสาร</div>
-                            <div>แสดงรายการข่าวสารล่าสุด 6 กิจกรรม</div>
+                            <div>แสดงรายการข่าวสารล่าสุด 8 กิจกรรม</div>
                             <div class="news_menu_scroll">
                                 <!-- <a class="btn"><i class="fas fa-list-ul"></i> ข่าวประชาสัมพ้นธ์ทั้งหมด</a> -->
                                 <div class="row d-flex justify-content-center">
@@ -143,18 +143,17 @@
                                     <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/ข่าวจัดซื้อจัดจ้าง'); ?>"><i class="fas fa-list-ul"></i> ข่าวจัดซื้อจัดจ้าง</a></div>
                                     <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/ประกาศรับสมัคร'); ?>"><i class="fas fa-list-ul"></i> ประกาศรับสมัคร</a></div>
                                     <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/คู่มือประชาชน'); ?>"><i class="fas fa-list-ul"></i> คู่มือประชาชน</a></div>
+                                    <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/ข่าวสารทั้งหมด'); ?>"><i class="fas fa-list-ul"></i> ข่าวสารทั้งหมด</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php for($x = 1; $x <= 6; $x++) {?>
-                    <div class="col-lg-4 mb-5">
+                    <?php for($x = 1; $x <= 8; $x++) {?>
+                    <div class="col-lg-3 mb-5">
                         <a href="<?php echo base_url('ข่าวสาร/ข่าวประชาสัมพันธ์/ข่าวต่างๆ'); ?>">
                             <div class="news_box">
-                                <!-- <div class="news_icon"><i class="far fa-newspaper fa-fw fa-3x"></i></div> -->
                                 <div class="news_text">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <!-- <h5>ข่าวประชาสัมพ้นธ์</h5> -->
                                     <div class="small">
                                         <div class="text-muted">กองคลัง</div>
                                     </div>
