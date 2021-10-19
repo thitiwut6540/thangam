@@ -76,7 +76,7 @@
                     <div class="col-3 col-lg-auto"><a href="#">ช่องทางติดต่อ</a></div>
                     <div class="col-3 col-lg-auto"><a href="#">แผนที่</a></div>
                     <div class="col-3 col-lg-auto"><a href="#">อีเมลล์</a></div>
-                    <div class="col-3 col-lg-auto"><a href="#">เจ้าหน้าที่</a></div>
+                    <div class="col-3 col-lg-auto"><a href="<?php echo base_url('Backoffice'); ?>">เจ้าหน้าที่</a></div>
                 </div>
             </div>
             <div class="col-12 col-lg-6 mt-4 mt-lg-0">

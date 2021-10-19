@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+define("ANW_SS","SSCM_");
+define("ANW_N1","องค์การบริหารส่วนตำบลท่างาม");
+define("ANW_N2","จังหวัดพิษณุโลก");
+define("ANW_LINE","");
 
 /*
 |--------------------------------------------------------------------------
