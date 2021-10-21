@@ -28,6 +28,85 @@ class M_Main_m extends CI_Model {
         return $fetch;
     }
 
+    function getGallery(){
+        $this->db->select("a.*, b.dp_name");
+        $this->db->from("tb_gal a");
+        $this->db->join("tb_depart b", "a.dp_id = b.dp_id", "left");
+        $this->db->where('a.gal_approve','Y');
+        $this->db->order_by("a.gal_date", "DESC");
+        $this->db->limit("5");
+        $query = $this->db->get();
+        $total_Re_g=$query->num_rows();
+
+        $fetch = array(
+            'total_Re_g'=>$total_Re_g,
+            'Re_g'=>$query->result(),
+        );
+        return $fetch;
+    }
+
+    function getNewsType(){
+        $this->db->select("*");
+        $this->db->from("tb_news_type");
+        $this->db->order_by("newstype_id", 'ASC');
+        $query = $this->db->get();
+        $fetch = array(
+            'total_Re_nt'=>$query->num_rows(),
+            'Re_nt'=>$query->result(),
+        );
+        return $fetch;
+    }
+
+    function getNews($type){
+
+        $condition="a.news_id > 0 AND a.news_approve='Y' AND a.news_status='Y' ";
+        $condition.="AND a.newstype_id = ".$type." ";
+  
+        $this->db->select("a.*, b.newstype_name, c.dp_name");
+        $this->db->from("tb_news a");
+        $this->db->join("tb_news_type b", "a.newstype_id = b.newstype_id", "left");
+        $this->db->join("tb_depart c", "a.dp_id = c.dp_id", "left");
+        $this->db->where($condition);
+        $this->db->order_by("a.news_date", "DESC");
+        $this->db->limit("6");
+        $query = $this->db->get();
+        $total_Re_n=$query->num_rows();
+  
+        $fetch = array(
+            'total_Re_n'=>$total_Re_n,
+            'Re_n'=>$query->result(),
+        );
+        return $fetch;
+    }
+
+    function getLinkDepart(){
+        $this->db->select("*");
+        $this->db->from("tb_link_depart");
+        $this->db->where("l_status", '1');
+        $this->db->order_by("l_no", 'ASC');
+        $query = $this->db->get();
+        $fetch = array(
+            'total_Re_ld'=>$query->num_rows(),
+            'Re_ld'=>$query->result(),
+        );
+        return $fetch;
+    }
+
+    function getBannerPopup(){
+        $this->db->select("*");
+        $this->db->from("tb_banner_popup");
+        $this->db->where("ban_status", "1");
+        $this->db->order_by("ban_no", "ASC");
+        $this->db->limit("1");
+        $query = $this->db->get();
+
+        $fetch = array(
+            'total_Re_bp'=>$query->num_rows(),
+            'Re_bp'=>$query->result(),
+        );
+        return $fetch;
+    }
+
     // function getTopicID($topic){
 
     //     $this->db->select("*");

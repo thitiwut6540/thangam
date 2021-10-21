@@ -29,9 +29,8 @@
     
     <script>
         $(function () {
-            $(document).scroll(function () {
-                var $nav = $(".navbar_custom");
-                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            $('#crl_menu').carousel({
+                interval: false,
             });
 
             $(".btn_scroll_top").click(function() {

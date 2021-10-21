@@ -52,108 +52,120 @@
             <?php } ?>
         </div>
 
-        <div id="section_gal" class="customize_gal">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                        <div class="gal_header">
-                            <div>แกลเลอรี่กิจกรรม</div>
-                            <div>Gallery</div>
-                            <div>
-                                readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal 
-                                distribution of letters, as opposed to using
-                            </div>
-                            <div>
-                                <a class="btn" href="<?php echo base_url('แกลลอรี่ทั้งหมด'); ?>"><i class="fas fa-list-ul"></i> แกลลอรี่ทั้งหมด</a>
+        <?php if ($ReG['total_Re_g'] > 0){ ?>
+            <div id="section_gal" class="customize_gal">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="gal_header">
+                                <div>แกลเลอรี่กิจกรรม</div>
+                                <div>Gallery</div>
+                                <div>
+                                    <a class="btn" href="<?php echo base_url('แกลลอรี่ทั้งหมด'); ?>"><i class="fas fa-list-ul"></i> แกลลอรี่ทั้งหมด</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php for($x = 1; $x <= 5; $x++) {?>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                        <div class="card h-100 border">
-                            <div class="gal_photo"><img src="<?php echo base_url('public/images/background/00'.$x.'.jpg'); ?>"></div>
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                <a class="text-decoration-none stretched-link" href="<?php echo base_url('แกลลอรี่/01'); ?>"><h5 class="card-title mb-3">Blog post title</h5></a>
-                                <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3"><i class="fas fa-calendar-alt"></i></div>
-                                        <div class="small">
-                                            <div class="text-muted">March 12, 2021</div>
+                        <?php foreach ($ReG['Re_g'] as $row_Re_g){?>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                                <div class="card h-100 border">
+                                    <div class="gal_photo">
+                                        <?php if(!empty($row_Re_g->gal_photo) OR $row_Re_g->gal_photo != null){ ?>
+                                            <img src="<?php echo base_url('public/images/gallery/'.$row_Re_g->gal_photo.''); ?>">
+                                        <?php } else { ?>
+                                            <img src="<?php echo base_url('public/images/nophoto.png'); ?>">
+                                        <?php } ?>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"><?php echo $row_Re_g->dp_name;?></div>
+                                        <a class="text-decoration-none stretched-link" href="<?php echo base_url('แกลลอรี่/'.$row_Re_g->dp_name.'/'.$row_Re_g->gal_id.''); ?>"><h5 class="card-title mb-3"><?php echo $row_Re_g->gal_name;?></h5></a>
+                                        <!-- <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                        <div class="d-flex align-items-end justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3"><i class="fas fa-calendar-alt"></i></div>
+                                                <div class="small">
+                                                    <div class="text-muted"><?php echo $this->M_Function_m->datethai_time($row_Re_g->gal_date);?></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
-                    <?php } ?>
                 </div>
             </div>
-        </div>
+        <?php } ?>
 
-        <div id="section_news" class="customize_news">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 text-center mb-4">
-                        <div class="news_header">
-                            <div>ข่าวสาร</div>
-                            <div>แสดงรายการข่าวสารล่าสุด 8 กิจกรรม</div>
-                            <div class="news_menu_scroll">
-                                <!-- <a class="btn"><i class="fas fa-list-ul"></i> ข่าวประชาสัมพ้นธ์ทั้งหมด</a> -->
-                                <div class="row d-flex justify-content-center">
-                                    <?php foreach ($Re_ntm['Re_ntm'] as $row_Re_ntm){ ?>
-                                        <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/'.$row_Re_ntm->newstype_name); ?>"><i class="fas fa-list-ul"></i> <?php echo $row_Re_ntm->newstype_name; ?></a></div>
-                                    <?php } ?>
-                                    <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/ข่าวสารทั้งหมด'); ?>"><i class="fas fa-list-ul"></i> ข่าวสารทั้งหมด</a></div>
+        <?php 
+        if ($ReNT['total_Re_nt'] > 0){ 
+            foreach ($ReNT['Re_nt'] as $row_Re_nt){
+                $ReN = $this->M_Main_m->getNews($row_Re_nt->newstype_id);
+                if($ReN['total_Re_n'] >0){
+        ?>
+            <div id="section_news" class="customize_news">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 text-center mb-4">
+                            <div class="news_header">
+                                <div><?php echo $row_Re_nt->newstype_name;?></div>
+                                <div>แสดงรายการข่าวสารล่าสุด <?php echo $ReN['total_Re_n']; ?> กิจกรรม</div>
+                                <div class="news_menu_scroll">
+                                    <!-- <a class="btn"><i class="fas fa-list-ul"></i> ข่าวประชาสัมพ้นธ์ทั้งหมด</a> -->
+                                    <div class="row d-flex justify-content-center">
+                                        <!-- <?php foreach ($Re_ntm['Re_ntm'] as $row_Re_ntm){ ?>
+                                            <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/'.$row_Re_ntm->newstype_name); ?>"><i class="fas fa-list-ul"></i> <?php echo $row_Re_ntm->newstype_name; ?></a></div>
+                                        <?php } ?> -->
+                                        <div class="col-12 col-lg-auto"><a class="btn" href="<?php echo base_url('ข่าวสาร/ข่าวสารทั้งหมด'); ?>"><i class="fas fa-list-ul"></i> <?php echo $row_Re_nt->newstype_name;?>ทั้งหมด</a></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <?php foreach ($Re_ntm['Re_n'] as $row_Re_n){ ?>
-                    <div class="col-lg-3 mb-5">
-                        <a href="<?php echo base_url('ข่าวสาร/ข่าวประชาสัมพันธ์/ข่าวต่างๆ'); ?>">
-                            <div class="news_box h-100">
-                                <div class="news_text">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <div class="small">
-                                        <div class="text-muted"><?php echo $row_Re_n->news_name; ?></div>
-                                    </div>
-                                    <div><?php echo $row_Re_n->news_detail; ?></div>
-                                    <div class="d-flex align-items-center mt-3">
-                                        <div class="me-3"><i class="fas fa-calendar-alt"></i></div>
-                                        <div class="small">
-                                            <div class="text-muted"><?php echo $row_Re_n->news_date; ?></div>
+                        <?php foreach ($ReN['Re_n'] as $row_Re_n){ ?>
+                        <div class="col-lg-4 mb-5">
+                            <a href="<?php echo base_url('ข่าวสาร/'.$row_Re_n->newstype_name.'/'.$row_Re_n->dp_name.'/รายละเอียด/'.$row_Re_n->news_id.''); ?>">
+                                <div class="news_box h-100">
+                                    <div class="news_text">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"><?php echo $row_Re_n->dp_name; ?></div>
+                                        <div class=""><?php echo $row_Re_n->news_name; ?></div>
+                                        <div class="d-flex align-items-center mt-3">
+                                            <div class="me-3"><i class="fas fa-calendar-alt"></i></div>
+                                            <div class="small">
+                                                <div class="text-muted"><?php echo $this->M_Function_m->datethai_time($row_Re_n->news_date); ?></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-
-        <div id="section_related" class="customize_related">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 mb-5 text-center">
-                        <div class="related_header">
-                            <div>หน่วยงานที่เกี่ยวข้อง</div>
-                            <div>แสดงรายการข่าวสารล่าสุด 3 กิจกรรม</div>
+                            </a>
                         </div>
+                        <?php } ?>
                     </div>
-                    <?php for($x = 1; $x <= 7; $x++) {?>
-                    <div class="col-6 col-lg-3 mb-3 mb-lg-5">
-                        <div class="related_photo"><img src="<?php echo base_url('public/images/related/00'.$x.'.png'); ?>"></div>
-                    </div>
-                    <?php } ?>
                 </div>
             </div>
-        </div>
+        <?php }}} ?>
+
+        <?php if($ReLD['total_Re_ld'] > 0){ ?>
+            <div id="section_related" class="customize_related">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 mb-5 text-center">
+                            <div class="related_header">
+                                <div>หน่วยงานที่เกี่ยวข้อง</div>
+                                <div>แสดงรายการข่าวสารล่าสุด <?php echo $ReLD['total_Re_ld']; ?> กิจกรรม</div>
+                            </div>
+                        </div>
+                        <?php foreach ($ReLD['Re_ld'] as $row_Re_ld){ ?>
+                            <div class="col-6 col-lg-3 mb-3 mb-lg-5">
+                                <a href="<?php echo $row_Re_ld->l_url; ?>">
+                                    <div class="related_photo"><img src="<?php echo base_url('public/images/link_depart/'.$row_Re_ld->l_photo.''); ?>"></div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
         <footer><?php $this->load->view('_footer');?></footer>
     </div>
 </div>

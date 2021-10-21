@@ -1,4 +1,4 @@
-<div id="crl_menu" class="carousel slide customize_menu_carousel" data-bs-ride="carousel">
+<div id="crl_menu" class="carousel slide customize_menu_carousel" data-bs-ride="carousel" data-interval="false">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#crl_menu" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#crl_menu" data-bs-slide-to="1" aria-label="Slide 2"></button>
