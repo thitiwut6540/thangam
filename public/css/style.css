@@ -433,6 +433,7 @@
     }
     
     .customize_menu_carousel .btn {
+        width: 100% !important;
         border: 1px solid #DEE2E6;
         background-color: #fff;
         padding: 1.75rem;
@@ -450,6 +451,21 @@
     
     .customize_menu_carousel .btn:hover {
         border: 1px solid #1a77d4;
+    }
+    
+    .customize_menu_carousel .menu_logo {
+        margin-bottom: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        /* border: 1px solid #1a77d4; */
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
     }
     /* chief */
     
